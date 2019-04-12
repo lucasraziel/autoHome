@@ -1,0 +1,10 @@
+{
+    "timeOut":3000,
+    "id": 1,
+    "comName":"COM3",
+    "baudRate":9600,
+    "dataBits":8,
+    "stopBits":1,
+    "parity":"even"
+
+}
