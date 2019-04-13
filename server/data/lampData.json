@@ -1,0 +1,128 @@
+[
+    {
+        "nome": "Corredor",
+        "lampadas": [{
+            "endereco":1280,
+            "status" : false
+        }]
+    },
+    {
+        "nome": "Sala de TV",
+        "lampadas": [{
+            "endereco":1281,
+            "status" : false
+        },
+        {
+            "endereco":1285,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Sala Jantar",
+        "lampadas": [{
+            "endereco":1282,
+            "status" : false
+        },
+        {
+            "endereco":1300,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Cozinha",
+        "lampadas": [{
+            "endereco":1288,
+            "status" : false
+        },
+        {
+            "endereco":1297,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Área de Serviço",
+        "lampadas": [{
+            "endereco":1289,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Varanda",
+        "lampadas": [{
+            "endereco":1290,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Quarto de hóspede",
+        "lampadas": [{
+            "endereco":1291,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Quarto das crianças",
+        "lampadas": [{
+            "endereco":1292,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Quarto do casal",
+        "lampadas": [{
+            "endereco":1293,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Closet",
+        "lampadas": [{
+                "endereco":1294,
+                "status" : false
+        }]
+    },
+
+    {
+        "nome": "Banheiro da suíte",
+        "lampadas": [{
+            "endereco":1295,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Banheiro social",
+        "lampadas": [{
+            "endereco":1296,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Home office",
+        "lampadas": [{
+            "endereco":1299,
+            "status" : false
+        }]
+    },
+
+    {
+        "nome": "Área de ventilação",
+        "lampadas": [{
+            "endereco":1295,
+            "status" : false
+        }]
+    }
+
+
+
+
+]

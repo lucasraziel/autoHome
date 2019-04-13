@@ -2,6 +2,7 @@
 
 var ModbusSingleton = require('./ModbusSingleton.js')
 const modBusClientData = require('./data/modBusClient.json')
+const dadosLampadas = require('./data/lampData.json')
 
 // Modbus 'state' constants
 var MBS_STATE_INIT          = 'State init'
@@ -36,7 +37,6 @@ var connectClient = function(...args)
     // set requests parameters
     client.setID(modBusClientData.id)
     client.setTimeout(modBusClientData.timeOut)
-    console.log(modBusClientData.comName)
     // try to connect
     client.connectRTUBuffered (modBusClientData.comName,{
         baudRate: modBusClientData.baudRate,
@@ -48,13 +48,11 @@ var connectClient = function(...args)
         {
             mbsState  = MBS_STATE_GOOD_CONNECT;
             mbsStatus = 'Connected, wait for reading...'
-            console.log(mbsStatus);
         })
-        .catch(function(e)
+        .catch(function(error)
         {
             mbsState  = MBS_STATE_FAIL_CONNECT;
-            mbsStatus = e.message;
-            console.log(e);
+            mbsStatus = error.message;
         })
 }
 
@@ -65,34 +63,24 @@ var readModbusData = function (...args){
     const length = args[0][1]
     var callBack = args[0][2]
     var finalizacao = args[0] [3]
-    console.log('args')
-    console.log(args)
-    console.log('dataAddress')
-    console.log(dataAddress)
-    console.log('length')
-    console.log(length)
     client.readDiscreteInputs (dataAddress, length)
         .then(function(data)
         {
             mbsState   = MBS_STATE_GOOD_READ;
             mbsStatus  = 'success';
             mbsBufData = data;
-            console.log('resultado')
-            console.log(data);
-            console.log(data.data[0])
             finalizacao(data, dataAddress,length,callBack)
         })
         .catch(function(error)
         {
             mbsState  = MBS_STATE_FAIL_READ;
             mbsStatus = error.message;
-            console.log(error);
         });
 }
 
 
 
-function writeSingleCoil(address, value){
+async function writeSingleCoil(address, value){
     client = startModbus()
 
     client.setID(modBusClientData.id)
@@ -109,7 +97,6 @@ function writeSingleCoil(address, value){
         
 
         client.writeFC5(1, address, value, function(){
-            console.log(`atualização de endereço ${address} para ${value} concluída com sucesso`)
             client.close()
         })
             
@@ -126,13 +113,10 @@ var closeClient = function(...args){
         }
     }
     mbsState = MBS_STATE_CLOSED
-    console.log('status closeClient')
-    console.log(mbsState)
 } 
 var runModbus = function()
 {
     var nextAction
-    console.log(mbsState)
     switch (mbsState)
     {
         case MBS_STATE_INIT:
@@ -168,8 +152,6 @@ var runModbus = function()
         default:
     }
 
-    console.log();
-    console.log(nextAction);
 
     // execute "next action" function if defined
     if (nextAction != undefined)
@@ -193,9 +175,7 @@ function readDiscreteInput(address, length, callBack){
     args[3] = getLampData
     runModbus()
    
-    console.log('retorno')
-    console.log(mbsBufData)
-    return getLampData(mbsBufData, address, length)
+    // return getLampData(mbsBufData, address, length)
 }
 
 var getLampData = function(data,address, length, callBack){
@@ -203,7 +183,17 @@ var getLampData = function(data,address, length, callBack){
     for(index=address;index<address+length;index++){
         lampadas[index] = data.data[index-address]
     }
-    console.log(lampadas)
+
+    for (const comodos in dadosLampadas) {
+        for(const lampada in comodos.lampadas){
+            lampada.status = lampadas[lampada.endereco]
+        }
+    }
+
+    callBack(dadosLampadas)
+
+    
+    
 }
 
 module.exports = {
