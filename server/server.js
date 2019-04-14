@@ -1,9 +1,12 @@
 var express = require('express');
     
-const atualizadorCLP = require('./atualizaCLP.js')
+const atualizadorCLP = require('./modbus/atualizaCLP.js')
+const leituraCLP = require('./update/leituraCLP.js')
 
 var app = express();
-var dadosLampada
+
+
+
     
 // Definir a route principal
 app.get('/', function(req, res) {
@@ -11,16 +14,14 @@ app.get('/', function(req, res) {
 });
 
 // Lista de Utilizadores
-atualizadorCLP.readDiscreteInput(0x0500,32,function(data){
-    dadosLampada = data
-})
 
 // Definir um endpoint da API
 app.get('/api/get_lampadas', function(req, res, next) {
-  res.json(dadosLampada);
+  //ler do banco de dados MongoDb
+  res.json(leituraCLP.dadosLampada);
 })
 
-app.get('/api/update_lampada?:endereco&:estado',async function(req,res,next){
+app.get('/api/update_lampada\*',async function(req,res,next){
     var endereco = req.params.endereco
     // var estado = req.params.estado
     // console.log(estado)
@@ -32,3 +33,5 @@ app.get('/api/update_lampada?:endereco&:estado',async function(req,res,next){
 
 // Aplicação disponível em http://127.0.0.1:9000/
 app.listen(9000);
+
+
