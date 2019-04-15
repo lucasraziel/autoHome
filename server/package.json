@@ -4,7 +4,10 @@
   "description": "Client side of AutoHome control",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updateModbus": "node ./update/leituraCLP.js",
+    "install": "node install.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +25,14 @@
   },
   "homepage": "https://github.com/lucasraziel/autoHome#readme",
   "devDependencies": {
+    "dotenv-safe": "^6.1.0",
     "express": "^4.16.4",
     "modbus-serial": "^7.5.1",
     "node-modbus": "^4.3.1",
-    "serialport": "^7.1.4"
+    "serialport": "^7.1.4",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "mongodb": "^3.2.3"
   }
 }

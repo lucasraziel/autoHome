@@ -1,20 +1,19 @@
-//Dependências externas
+//  Dependências externas
 
-var ModbusSingleton = require('../ModbusSingleton.js')
+var ModbusSingleton = require('./ModbusSingleton.js')
 const modBusClientData = require('../data/modBusClient.json')
 const dadosLampadas = require('../data/lampData.json')
 
 
 
-//variáveis globais
+//  variáveis globais
 
 
 
-const lampData = []
 
-//===========================================================================
-function startModbus(){
-    return  new ModbusSingleton().getInstance()
+// ===========================================================================
+function startModbus () {
+  return new ModbusSingleton().getInstance()
 }
 
 
@@ -48,23 +47,7 @@ async function writeSingleCoil(address, value){
 }
 
 
-var getLampData = function(data,address, length, callBack){
-    var lampadas = []
-    for(index=address;index<address+length;index++){
-        lampadas[index] = data.data[index-address]
-    }
 
-    for (const comodos in dadosLampadas) {
-        for(const lampada in comodos.lampadas){
-            lampada.status = lampadas[lampada.endereco]
-        }
-    }
-
-    callBack(dadosLampadas)
-
-    
-    
-}
 
 function readDiscreteInputs(dataAddress, length, callBack){
     client = startModbus()
