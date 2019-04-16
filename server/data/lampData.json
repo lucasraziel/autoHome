@@ -3,42 +3,49 @@
         "nome": "Corredor",
         "lampadas": [{
             "endereco":1280,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada do Corredor"
         }]
     },
     {
         "nome": "Sala de TV",
         "lampadas": [{
             "endereco":1281,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada da sala"
         },
         {
-            "endereco":1285,
-            "status" : false
+            "endereco":1295,
+            "status" : false,
+            "nome":"Lâmpada secundária da sala"
         }]
     },
 
     {
         "nome": "Sala Jantar",
         "lampadas": [{
-            "endereco":1282,
-            "status" : false
+            "endereco":1288,
+            "status" : false,
+            "nome":"Lâmpada da sala de jantar"
         },
         {
-            "endereco":1300,
-            "status" : false
+            "endereco":1293,
+            "status" : false,
+            "nome":"Lâmpada secundária da sala de jantar"
         }]
     },
 
     {
         "nome": "Cozinha",
         "lampadas": [{
-            "endereco":1288,
-            "status" : false
+            "endereco":1282,
+            "status" : false,
+            "nome":"Lâmpada da cozinha"
         },
         {
             "endereco":1297,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada secundária da cozinha"
         }]
     },
 
@@ -46,7 +53,8 @@
         "nome": "Área de Serviço",
         "lampadas": [{
             "endereco":1289,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada da área de serviço"
         }]
     },
 
@@ -54,7 +62,8 @@
         "nome": "Varanda",
         "lampadas": [{
             "endereco":1290,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada da varanda"
         }]
     },
 
@@ -62,7 +71,8 @@
         "nome": "Quarto de hóspede",
         "lampadas": [{
             "endereco":1291,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada do quarto do hóspede"
         }]
     },
 
@@ -70,15 +80,17 @@
         "nome": "Quarto das crianças",
         "lampadas": [{
             "endereco":1292,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada do quarto das crianças"
         }]
     },
 
     {
         "nome": "Quarto do casal",
         "lampadas": [{
-            "endereco":1293,
-            "status" : false
+            "endereco":1300,
+            "status" : false,
+            "nome":"Lâmpada do quarto de casal"
         }]
     },
 
@@ -86,15 +98,17 @@
         "nome": "Closet",
         "lampadas": [{
                 "endereco":1294,
-                "status" : false
+                "status" : false,
+                "nome":"Lâmpada do closet"
         }]
     },
 
     {
         "nome": "Banheiro da suíte",
         "lampadas": [{
-            "endereco":1295,
-            "status" : false
+            "endereco":1285,
+            "status" : false,
+            "nome":"Lâmpada do banheiro da suíte"
         }]
     },
 
@@ -102,7 +116,8 @@
         "nome": "Banheiro social",
         "lampadas": [{
             "endereco":1296,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada do banheiro social"
         }]
     },
 
@@ -110,7 +125,8 @@
         "nome": "Home office",
         "lampadas": [{
             "endereco":1299,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada do home office"
         }]
     },
 
@@ -118,7 +134,8 @@
         "nome": "Área de ventilação",
         "lampadas": [{
             "endereco":1295,
-            "status" : false
+            "status" : false,
+            "nome":"Lâmpada da área de ventilação"
         }]
     }
 

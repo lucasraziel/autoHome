@@ -8,8 +8,6 @@ var collectionName = configVariables.parsed.COLLECTION_NAME
 function updateStatus(dadosDispositivos){
     var querySearch
     var newValues
-    console.log('teste')
-    console.log(dadosDispositivos)
 
     MongoClient.connect(urlDatabase, function(err, db) {
         if (err) throw err
@@ -17,11 +15,8 @@ function updateStatus(dadosDispositivos){
         var collectionDatabase = dbo.collection(collectionName)
         
         for (let index=0;index<dadosDispositivos.length;index++ ) {
-            console.log('teste comodos')
-            console.log(dadosDispositivos[index])
             for (let indexJ=0;indexJ<dadosDispositivos[index].lampadas.length;indexJ++){
                 var dispositivo = dadosDispositivos[index].lampadas[indexJ]
-                console.log(dispositivo)
                 querySearch = {
                     'lampadas': {
                       '$elemMatch': {
@@ -35,21 +30,9 @@ function updateStatus(dadosDispositivos){
                     }
                 }
 
-
-                collectionDatabase.find(querySearch).toArray(function(error,result){
-                    if (error) throw error
-                    // db.close()
-                    console.log(result)
-                    // callBack(result)
-                })
-
-
-                console.log(newValues)
-                console.log(querySearch)
                 collectionDatabase.updateOne
                     (querySearch, newValues,function(error, response){
                         if(error) throw error
-                        console.log('1 object updated')
                     })
             }
         }

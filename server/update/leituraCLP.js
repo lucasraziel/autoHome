@@ -17,18 +17,11 @@ function inicializa (){
     atualizadorCLP.readDiscreteInputs(dataAddress,readingLength,function fim (error, data) {
         if (error){
             console.log(error)
+            setTimeout(retorno,5000)
         }else{
-            console.log('resultado')
-            console.log(data)
 
             var dadosComodos = getLampData(data,dataAddress,readingLength)
-            console.log(dadosComodos)
-
             databaseController.updateStatus(dadosComodos)
-
-
-            //salvar em banco de dados
-
             setTimeout(retorno,5000)
         }
     })
@@ -39,11 +32,7 @@ function getLampData(data,address, length){
     var lampadas = []
 
     var dadosDispositivos = dadosLampadas
-    console.log(`address: ${address}`)
-    console.log(`length: ${length}`)
     for(index=address;index<address+length;index++){
-        console.log(index)
-        console.log(address+length)
         // console.log('debug getLamp 1')
         // console.log(`lampadas[${index}] = ${data.data[index-address]}`)
         lampadas[index] = data.data[index-address]
@@ -51,8 +40,6 @@ function getLampData(data,address, length){
 
     dadosLampadas.forEach(comodos => {
         comodos.lampadas.forEach(lampada =>{
-            console.log('debug getLamp 2')
-            console.log(`lampadas[${lampada.endereco}] = ${lampadas[lampada.endereco]}`)
             lampada.status = lampadas[lampada.endereco]
         })
     })
