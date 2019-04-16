@@ -18,7 +18,7 @@ function startModbus () {
 
 
 
-async function writeSingleCoil(address, value){
+async function writeSingleCoil(address, value, next){
     const client = startModbus()
 
     client.setID(modBusClientData.id)
@@ -34,10 +34,16 @@ async function writeSingleCoil(address, value){
         client.setTimeout(modBusClientData.timeOut)
         
 
-        client.writeFC5(modBusClientData.id, address, value, function(){
+        client.writeFC5(modBusClientData.id, address, value, function(error){
             if(client.isOpen){
                 client.close()
             }
+            if (error){
+                next(!value)
+            }else{
+                next(value)
+            }
+            
         })
             
 
