@@ -9,7 +9,7 @@
   "author": "Lucas Rego",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "react": "^16.8.6"
   },
   "devDependencies": {
